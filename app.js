@@ -118,4 +118,4 @@ app.patch("/api/user/phone", function(request, response){
   })
 });
 
-app.listen(8000);
+app.listen(3000);
