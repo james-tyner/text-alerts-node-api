@@ -2,7 +2,7 @@ const frisby = require("frisby");
 const { Joi } = frisby;
 
 
-it("should update a user’s phone number", function(){
+it("should update a user’s phone number", async function(){
   return frisby
     .fetch("http://localhost:3000/api/user/phone/fake@jamestyner.com", {
       method:"PATCH",
@@ -15,7 +15,7 @@ it("should update a user’s phone number", function(){
     .expect("jsonTypes", "id", Joi.number().required())
 });
 
-it("should return 404 when a user’s phone number can’t be updated", function(){
+it("should return 404 when a user’s phone number can’t be updated", async function(){
   return frisby
   .fetch("http://localhost:3000/api/user/phone/nonexistent@jamestyner.com", {
     method:"PATCH",

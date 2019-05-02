@@ -1,7 +1,7 @@
 const frisby = require("frisby");
 const { Joi } = frisby;
 
-it("should return a single alert", function(){
+it("should return a single alert", async function(){
   return frisby.get("http://localhost:3000/api/alerts")
     .expect("status", 200)
     .expect('jsonTypes', {
