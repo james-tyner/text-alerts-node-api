@@ -4,7 +4,7 @@ services:
   - mysql
 node_js: "11"
 before_install:
-  - mysql -u 'root' --password "" < travis.sql
+  - mysql -e travis.sql
 install: npm install
 before_script: npm install -g forever
 script: npm test

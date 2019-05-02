@@ -1,6 +1,3 @@
-CREATE USER 'testing'@'localhost' IDENTIFIED WITH mysql_native_password BY 'testing';
-GRANT ALL PRIVILEGES ON *.* TO 'testing'@'localhost';
-
 CREATE DATABASE IF NOT EXISTS test;
 
 USE test;
