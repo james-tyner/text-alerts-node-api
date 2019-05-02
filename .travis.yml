@@ -3,8 +3,8 @@ sudo: true
 services:
   - mysql
 node_js: "11"
-before_install:
-  - mysql -e travis.sql
 install: npm install
 before_script: npm install -g forever
 script: npm test
+after_failure:
+  - mysql -e 'show databases;'
