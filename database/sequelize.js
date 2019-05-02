@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 
 
 if (process.env.ENVIRONMENT == "travis"){
-  module.exports = new Sequelize("text_alerts", "root", "", {
+  module.exports = new Sequelize("test", "testing", "testing", {
     host:"127.0.0.1",
     dialect:"mysql"
   });
