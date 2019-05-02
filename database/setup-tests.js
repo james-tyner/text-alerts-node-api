@@ -4,7 +4,7 @@ const UserRequest = require("../models/userRequest");
 const Subscriber = require("../models/subscriber");
 const Message = require("../models/messageRecord");
 
-if (process.env.CI = true){
+if (process.env.CI == true){
   Sequelize.query(`CREATE TABLE message_history(
     id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     message VARCHAR(255) NOT NULL,
