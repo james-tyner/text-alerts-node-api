@@ -1,8 +1,10 @@
 language: node_js
+sudo: true
 services:
   - mysql
 node_js: "11"
 before_install:
+  - bash .travis.install-mysql-5.7.sh
   - mysql -e "CREATE DATABASE IF NOT EXISTS test;"
   - mysql -e "USE test;"
   - mysql -e "CREATE TABLE message_history(id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY, message VARCHAR(255) NOT NULL, mediaUrl VARCHAR(255), sender BIGINT(20) NOT NULL, created_at TIMESTAMP, updated_at TIMESTAMP);"
