@@ -3,8 +3,8 @@ const Sequelize = require("sequelize");
 
 
 if (process.env.ENVIRONMENT == "travis"){
-  module.exports = new Sequelize("text_alerts", process.env.DB_USER, process.env.DB_PASSWORD, {
-    host:"https://annenberg-text.jamestyner.com",
+  module.exports = new Sequelize("test", "travis", "new_password", {
+    host:"127.0.0.1",
     port:3306,
     dialect:"mysql"
   });
