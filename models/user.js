@@ -11,25 +11,48 @@ module.exports = sequelize.define("user", {
     primaryKey: true
   },
   fname: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    validate:{
+      notEmpty:{
+        msg:"That first name isn’t valid."
+      }
+    }
   },
   lname:{
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    validate:{
+      notEmpty:{
+        msg:"That last name isn’t valid."
+      }
+    }
   },
   email:{
     type:Sequelize.STRING,
     unique:true,
     validate:{
-      isEmail:true
+      isEmail:{
+        msg:"That isn’t a valid email address."
+      }
     }
   },
+  password:{
+    type:Sequelize.STRING
+  },
   super:{
-    type:Sequelize.BOOLEAN
+    type:Sequelize.BOOLEAN,
+    validate:{
+      isIn:{
+        args:[[true, false]],
+        msg:"That user level isn’t valid."
+      }
+    }
   },
   phone:{
     type:Sequelize.BIGINT(20).UNSIGNED,
     validate:{
-      isNumeric:true,
+      isNumeric:{
+        msg:"Phone number must be a number."
+      },
       len:{
         args:10,
         msg:"Phone number must be from the US or Canada and exactly 10 digits."

@@ -36,8 +36,8 @@ app.post("/api/subscribe", function(request, response){
 });
 
 // Unsubscribe from alerts
-app.delete("/api/subscribe", function(request, response){
-  Subscriber.findOne({where:{phone:request.body.phone}}).then(function(foundSubscriber){
+app.delete("/api/subscribe/:phone", function(request, response){
+  Subscriber.findOne({where:{phone:request.params.phone}}).then(function(foundSubscriber){
     if (foundSubscriber) {
       return foundSubscriber.destroy();
     } else {
@@ -85,7 +85,7 @@ app.post("/api/user/requests/new", function(request, response){
 // Get a list of pending user requests
 app.get("/api/user/requests", function(request, response){
   UserRequest.findAll().then(function(allRequests){
-    if(allRequests && allRequests.length > 0){
+    if(allRequests){
       response.json(allRequests);
     } else {
       response.status(404).send();
@@ -94,8 +94,8 @@ app.get("/api/user/requests", function(request, response){
 });
 
 // Update user's phone number
-app.patch("/api/user/phone", function(request, response){
-  User.findOne({where:{email:request.body.email}})
+app.patch("/api/user/phone/:email", function(request, response){
+  User.findOne({where:{email:request.params.email}})
   .then(function(thisUser){
     if(thisUser){
       thisUser.phone = request.body.phone;

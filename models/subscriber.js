@@ -9,13 +9,20 @@ module.exports = sequelize.define("subscriber", {
     primaryKey: true
   },
   name: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    validate:{
+      notEmpty:{
+        msg:"You have to enter a name."
+      }
+    }
   },
   phone:{
     type:Sequelize.BIGINT(20).UNSIGNED,
     unique:true,
     validate:{
-      isNumeric:true,
+      isNumeric:{
+        msg:"Phone number must be a number."
+      },
       len:{
         args:10,
         msg:"Phone number must be from the US or Canada and exactly 10 digits."

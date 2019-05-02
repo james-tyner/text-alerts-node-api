@@ -9,16 +9,28 @@ module.exports = sequelize.define("message_record", {
     primaryKey: true
   },
   message: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    validate:{
+      notEmpty:{
+        msg:"The alert must contain text."
+      }
+    }
   },
   mediaUrl:{
     type:Sequelize.STRING,
     validate:{
-      isUrl:true
+      isUrl:{
+        msg:"The image must be a valid image URL."
+      }
     }
   },
   sender:{
-    type:Sequelize.BIGINT(20)
+    type:Sequelize.BIGINT(20),
+    validate:{
+      isInt:{
+        msg:"Sender must be an integer."
+      }
+    }
   }
 }, {
   //need to match what Laravel is doing

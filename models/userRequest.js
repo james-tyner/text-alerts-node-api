@@ -9,16 +9,28 @@ module.exports = sequelize.define("user_request", {
     primaryKey: true
   },
   fname: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    validate:{
+      notEmpty:{
+        msg:"That first name isn’t valid."
+      }
+    }
   },
   lname:{
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    validate:{
+      notEmpty:{
+        msg:"That last name isn’t valid."
+      }
+    }
   },
   email:{
     type:Sequelize.STRING,
     unique:true,
     validate:{
-      isEmail:true
+      isEmail:{
+        msg:"That isn’t a valid email address."
+      }
     }
   }
 }, {
