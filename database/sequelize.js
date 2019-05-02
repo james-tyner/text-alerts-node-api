@@ -2,7 +2,7 @@ const dotenv = require("dotenv").config();
 const Sequelize = require("sequelize");
 
 
-if (process.env.ENVIRONMENT == "travis"){
+if (process.env.CI = true){
   module.exports = new Sequelize("test", "travis", "new_password", {
     host:"127.0.0.1",
     port:3306,
